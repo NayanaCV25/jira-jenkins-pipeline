@@ -1,0 +1,15 @@
+node {
+  stage('JIRA') {
+    def testIssue = [fields: [ project: [key: 'MGM'],
+                               summary: 'New JIRA Created from Jenkins.',
+                               //description: 'New JIRA Created from Jenkins.',
+                               //customfield_14802: ["XXXX"],
+                               //components: [[name: 'component1']],
+                               issuetype: [name: 'Task']]]
+
+    response = jiraNewIssue issue: testIssue, site: 'JIRA'
+
+    echo response.successful.toString()
+    echo response.data.toString()
+  }
+}
